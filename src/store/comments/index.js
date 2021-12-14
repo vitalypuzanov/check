@@ -11,7 +11,7 @@ const initialDetailsState = {
   loading: false,
 };
 
-export default function userDetailsReducer(
+export default function commentReducer(
   state = initialDetailsState,
   action,
 ) {

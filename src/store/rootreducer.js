@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import {connectRouter} from 'connected-react-router';
 import {createBrowserHistory} from 'history';
 import postReducer from './posts/index';
-import userDetailsReducer from './comments/index';
+import commentReducer from './comments/index';
 
 export const history = createBrowserHistory();
 
@@ -13,7 +13,7 @@ export function appReducer(state = initial, action) {
 }
 
 const rootReducer = combineReducers({
-  comment: userDetailsReducer,
+  comment: commentReducer,
   post: postReducer,
   app: appReducer,
   router: connectRouter(history),
