@@ -1,0 +1,14 @@
+// export interface Post {
+//     loading: boolean,
+//     search: string,
+//     error: null,
+//     data: object,
+//     laoding_user: boolean,
+// }
+
+// export interface Comment {
+//     id: boolean,
+//     data: string,
+//     error: null,
+//     laoding: boolean,
+// }

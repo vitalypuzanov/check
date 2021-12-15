@@ -1,7 +1,7 @@
 import {
-  LOAD_USER_DETAILS,
-  LOAD_USER_DETAILS_FAILURE,
-  LOAD_USER_DETAILS_SUCCESS,
+  LOAD_COMMENT_LIST,
+  LOAD_COMMENT_LIST_FAILURE,
+  LOAD_COMMENT_LIST_SUCCESS,
 } from './actions';
 
 const initialDetailsState = {
@@ -11,19 +11,16 @@ const initialDetailsState = {
   loading: false,
 };
 
-export default function commentReducer(
-  state = initialDetailsState,
-  action,
-) {
+export default function commentReducer(state = initialDetailsState, action) {
   switch (action.type) {
-    case LOAD_USER_DETAILS: {
+    case LOAD_COMMENT_LIST: {
       return {
         ...state,
         loading: true,
       };
     }
 
-    case LOAD_USER_DETAILS_SUCCESS: {
+    case LOAD_COMMENT_LIST_SUCCESS: {
       return {
         ...state,
         loading: false,
@@ -32,7 +29,7 @@ export default function commentReducer(
       };
     }
 
-    case LOAD_USER_DETAILS_FAILURE: {
+    case LOAD_COMMENT_LIST_FAILURE: {
       return {
         ...state,
         loading: false,

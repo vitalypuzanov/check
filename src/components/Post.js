@@ -2,7 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {LOAD_USER_DETAILS} from '../store/comments/actions';
+import {LOAD_COMMENT_LIST} from '../store/comments/actions';
 
 import Comment from './Comment';
 
@@ -34,7 +34,7 @@ export default function RecipeReviewCard() {
   const getcomments = (id) => {
     setCardValue(id);
     dispatch({
-      type: LOAD_USER_DETAILS,
+      type: LOAD_COMMENT_LIST,
       payload: {
         id: id,
       },

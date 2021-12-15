@@ -3,6 +3,7 @@ import {connectRouter} from 'connected-react-router';
 import {createBrowserHistory} from 'history';
 import postReducer from './posts/index';
 import commentReducer from './comments/index';
+import userReducer from './user';
 
 export const history = createBrowserHistory();
 
@@ -13,9 +14,9 @@ export function appReducer(state = initial, action) {
 }
 
 const rootReducer = combineReducers({
+  user: userReducer,
   comment: commentReducer,
   post: postReducer,
-  app: appReducer,
   router: connectRouter(history),
 });
 
