@@ -6,12 +6,12 @@ import {
   LOAD_USER_LIST,
   LOAD_USER_SUCCESS,
   LOAD_FILTER,
-} from '../../reducers/posts/actions';
+} from './actions';
 import {
   LOAD_USER_DETAILS_SUCCESS,
   LOAD_USER_DETAILS_FAILURE,
   LOAD_USER_DETAILS,
-} from '../../reducers/comments/actions';
+} from '../comments/actions';
 
 export function* loadComments({payload}) {
   const {id} = payload;

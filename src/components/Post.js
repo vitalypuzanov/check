@@ -1,8 +1,8 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {LOAD_USER_DETAILS} from '../redux/reducers/comments/actions';
+import {LOAD_USER_DETAILS} from '../store/comments/actions';
 
 import Comment from './Comment';
 
@@ -22,7 +22,6 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-
 export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
@@ -33,7 +32,7 @@ export default function RecipeReviewCard() {
   console.log('Пришедшие коменты', comments);
 
   const getcomments = (id) => {
-    setCardValue(id)
+    setCardValue(id);
     dispatch({
       type: LOAD_USER_DETAILS,
       payload: {
@@ -84,7 +83,10 @@ export default function RecipeReviewCard() {
               <ExpandMoreIcon />
             </IconButton>
           </CardActions>
-          <Collapse in={(post.id) === cardValue && expanded} timeout="auto" unmountOnExit>
+          <Collapse
+            in={post.id === cardValue && expanded}
+            timeout="auto"
+            unmountOnExit>
             <CardContent>
               <Comment></Comment>
               <Typography paragraph>Comments:</Typography>

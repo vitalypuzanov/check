@@ -8,7 +8,6 @@ import {
 } from './actions';
 import {LOAD_USER_DETAILS} from '../comments/actions';
 
-
 const initialPostState = {
   loading: true,
   search: '',
