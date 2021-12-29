@@ -1,8 +1,9 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useTypedSelector} from '../hooks/UsedTypedSelector';
 
-function Comment() {
-  const comments = useSelector((state) => state.comment.data);
+const Comment: React.FC = () => {
+  const comments = useTypedSelector((state) => state.comment.data);
+
   return (
     <div>
       {comments?.map((comments) => (
@@ -15,6 +16,6 @@ function Comment() {
       ))}
     </div>
   );
-}
+};
 
 export default Comment;

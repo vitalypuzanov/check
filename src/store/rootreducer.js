@@ -7,17 +7,13 @@ import userReducer from './user';
 
 export const history = createBrowserHistory();
 
-const initial = {};
-
-export function appReducer(state = initial, action) {
-  return state;
-}
-
 const rootReducer = combineReducers({
   user: userReducer,
   comment: commentReducer,
   post: postReducer,
   router: connectRouter(history),
 });
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;
