@@ -2,7 +2,7 @@ import {call, apply, takeEvery, put, take, fork} from 'redux-saga/effects';
 import {LOCATION_CHANGE} from 'connected-react-router';
 import {LOAD_POST_SUCCESS, LOAD_POST_LIST, LOAD_FILTER} from './actions';
 
-export function* loadPostsList(search) {
+export function* loadPostsList() {
   const request = yield call(
     fetch,
     'https://jsonplaceholder.typicode.com/posts',

@@ -1,5 +1,5 @@
 import {UserAction, UserActionTypes, UserState} from './../user/type';
-import {LOAD_USER_LIST, LOAD_USER_FAILURE, LOAD_USER_SUCCESS} from './actions';
+
 
 const initialPostState: UserState = {
   loading_user: true,
@@ -15,7 +15,7 @@ export default function userReducer(
       return {
         ...state,
         loading_user: false,
-        // error_user: action.payload,
+        
       };
     }
 
