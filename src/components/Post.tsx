@@ -2,7 +2,9 @@ import React from 'react';
 import {useState} from 'react';
 
 import {useDispatch} from 'react-redux';
-import {LOAD_COMMENT_LIST} from '../store/comments/actions';
+import {LOAD_COMMENT_LIST} from '../store/comments/actionTypes';
+
+import {useTypedSelector} from '../hooks/UsedTypedSelector';
 
 import Comment from './Comment';
 
@@ -21,16 +23,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import {useTypedSelector} from '../hooks/UsedTypedSelector';
 
 export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   const [cardValue, setCardValue] = useState('');
-  const post = useTypedSelector((state) => state.post.data);
-  const comments = useTypedSelector((state) => state.comment.data);
+  const post = useTypedSelector((state) => state.post.data.data);
   const dispatch = useDispatch();
-  console.log('Пришедшие коменты', comments);
 
   const getcomments = (id: string) => {
     setCardValue(id);
@@ -41,7 +40,6 @@ export default function RecipeReviewCard() {
       },
     });
     setExpanded(!expanded);
-    console.log('Мой айди', id);
   };
 
   return (
@@ -90,8 +88,6 @@ export default function RecipeReviewCard() {
             unmountOnExit>
             <CardContent>
               <Comment></Comment>
-              <Typography paragraph>Comments:</Typography>
-              <Typography paragraph>{comments.body}</Typography>
             </CardContent>
           </Collapse>
         </Card>

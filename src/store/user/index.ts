@@ -1,6 +1,5 @@
 import {UserAction, UserActionTypes, UserState} from './../user/type';
 
-
 const initialPostState: UserState = {
   loading_user: true,
   error_user: null,
@@ -15,7 +14,6 @@ export default function userReducer(
       return {
         ...state,
         loading_user: false,
-        
       };
     }
 

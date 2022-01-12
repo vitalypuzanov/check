@@ -1,7 +1,21 @@
+import {
+  LOAD_COMMENT_LIST,
+  LOAD_COMMENT_LIST_SUCCESS,
+  LOAD_COMMENT_LIST_FAILURE,
+} from './actionTypes';
+
 export interface CommentState {
-  data: any[] | null;
+  data: Comment[] | null | string;
   loading: boolean;
   error: null | string;
+}
+
+export interface Comment {
+  postId: number;
+  id: number | string;
+  name: string;
+  email: string;
+  body: string;
 }
 
 export enum CommentActionTypes {
@@ -9,16 +23,25 @@ export enum CommentActionTypes {
   LOAD_COMMENT_LIST_SUCCESS = 'LOAD_COMMENT_LIST_SUCCESS',
   LOAD_COMMENT_LIST_FAILURE = 'LOAD_COMMENT_LIST_FAILURE',
 }
-interface FetchCommentAction {
-  type: CommentActionTypes.LOAD_COMMENT_LIST;
+
+export interface FetchCommentSuccessPayload {
+  data: Comment[];
 }
-interface FetchCommentSuccessAction {
-  type: CommentActionTypes.LOAD_COMMENT_LIST_SUCCESS;
-  payload: any[];
+
+export interface FetchCommenFailurePayload {
+  error: string;
 }
-interface FetchCommentErrorAction {
-  type: CommentActionTypes.LOAD_COMMENT_LIST_FAILURE;
-  payload: string;
+
+export interface FetchCommentAction {
+  type: typeof LOAD_COMMENT_LIST;
+}
+export interface FetchCommentSuccessAction {
+  type: typeof LOAD_COMMENT_LIST_SUCCESS;
+  payload: any;
+}
+export interface FetchCommentErrorAction {
+  type: typeof LOAD_COMMENT_LIST_FAILURE;
+  payload: any;
 }
 export type CommentAction =
   | FetchCommentAction

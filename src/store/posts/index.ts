@@ -1,12 +1,11 @@
 import {PostState, PostActionTypes, PostAction} from './type';
-import {LOAD_COMMENT_LIST} from '../comments/actions';
-
+import {LOAD_COMMENT_LIST} from '../comments/actionTypes';
 
 const initialPostState: PostState = {
   loading: true,
   search: '',
   error: null,
-  data: null,
+  data: '',
 };
 export default function postReducer(
   state = initialPostState,
@@ -14,7 +13,6 @@ export default function postReducer(
 ) {
   switch (action.type) {
     case PostActionTypes.LOAD_POST_LIST: {
-      
       return {
         ...state,
         loading: true,

@@ -1,12 +1,7 @@
-// import {
-//   LOAD_COMMENT_LIST,
-//   LOAD_COMMENT_LIST_FAILURE,
-//   LOAD_COMMENT_LIST_SUCCESS,
-// } from './actions';
 import {CommentState, CommentActionTypes, CommentAction} from './type';
 
 const initialDetailsState: CommentState = {
-  data: null,
+  data: '',
   error: null,
   loading: false,
 };
