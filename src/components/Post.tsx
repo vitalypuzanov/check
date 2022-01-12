@@ -1,12 +1,14 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {LOAD_COMMENT_LIST} from '../store/comments/actions';
+import {useDispatch} from 'react-redux';
+import {LOAD_COMMENT_LIST} from '../store/comments/actionTypes';
+
+import {useTypedSelector} from '../hooks/UsedTypedSelector';
 
 import Comment from './Comment';
 
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -26,12 +28,10 @@ export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
   const [cardValue, setCardValue] = useState('');
-  const post = useSelector((state) => state.post.data);
-  const comments = useSelector((state) => state.comment.data);
+  const post = useTypedSelector((state) => state.post.data.data);
   const dispatch = useDispatch();
-  console.log('Пришедшие коменты', comments);
 
-  const getcomments = (id) => {
+  const getcomments = (id: string) => {
     setCardValue(id);
     dispatch({
       type: LOAD_COMMENT_LIST,
@@ -40,12 +40,11 @@ export default function RecipeReviewCard() {
       },
     });
     setExpanded(!expanded);
-    console.log('Мой айди', id);
   };
 
   return (
     <div>
-      {post?.map((post, comments) => (
+      {post?.map((post: any, comments: any) => (
         <Card className={classes.root}>
           <CardHeader
             avatar={
@@ -89,8 +88,6 @@ export default function RecipeReviewCard() {
             unmountOnExit>
             <CardContent>
               <Comment></Comment>
-              <Typography paragraph>Comments:</Typography>
-              <Typography paragraph>{comments.body}</Typography>
             </CardContent>
           </Collapse>
         </Card>
@@ -99,25 +96,27 @@ export default function RecipeReviewCard() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-}));
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
+    avatar: {
+      backgroundColor: red[500],
+    },
+  }),
+);

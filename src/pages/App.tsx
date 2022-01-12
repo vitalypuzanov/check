@@ -1,19 +1,16 @@
-import {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
 
 import Post from '../components/Post';
-import {useDispatch, useSelector} from 'react-redux';
-import {LOAD_FILTER} from '../store/posts/actions';
+
+import {LOAD_FILTER} from '../store/posts/actionTypes';
+
+import {useTypedSelector} from '../hooks/UsedTypedSelector';
 
 function App() {
-  const user = useSelector((state) => state.user.user);
-  const post = useSelector((state) => state.post.data);
+  const user = useTypedSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    localStorage.setItem(post, JSON.stringify(post));
-  }, [post]);
-
-  const search = (e) => {
+  const search = (e: any) => {
     dispatch({
       type: LOAD_FILTER,
       payload: {
